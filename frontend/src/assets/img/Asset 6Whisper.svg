@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120.28 81.95">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Neonmachine, 'Neon machine';
+      }
+
+      .cls-2 {
+        font-size: 10px;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #231f20;
+      }
+
+      .cls-3, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        font-family: HACKED, HACKED;
+      }
+
+      .cls-4 {
+        fill: #4bc4ce;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <path class="cls-3" d="M28.02,11.53l-2.49-3.74c-8.52.06-17.02,1.01-25.53.91l4.05,5.89,23.98-3.06Z"/>
+        <path class="cls-4" d="M28.02,11.53l-2.49-3.74c-8.52.06-17.02,1.01-25.53.91l4.05,5.89,23.98-3.06Z"/>
+        <polygon class="cls-4" points="39.6 28.64 23.94 43.27 28.69 50.18 41.68 31.81 39.6 28.64"/>
+        <polygon class="cls-4" points="35.63 22.67 16.31 32.15 19.93 37.44 37.85 26 35.63 22.67"/>
+        <polygon class="cls-4" points="30.26 14.6 7.76 19.7 11.79 25.58 32.66 18.2 30.26 14.6"/>
+        <polygon class="cls-3" points="68.43 0 79.29 17.48 86.74 17.48 72.14 39.36 56.81 16.41 31.12 54.93 41.52 70.02 56.81 47.75 72.14 70.02 120.28 0 68.43 0"/>
+      </g>
+      <text class="cls-2" transform="translate(18.85 79.91)"><tspan class="cls-1" x="0" y="0">Whisper </tspan><tspan class="cls-5" x="49.36" y="0">FRAMes</tspan></text>
+    </g>
+  </g>
+</svg>
