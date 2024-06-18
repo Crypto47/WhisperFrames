@@ -1,11 +1,9 @@
-import hashlib
-import json
 from flask import Flask, request, send_file, jsonify, Response
 from steganogan import SteganoGAN
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 from Crypto.Random import get_random_bytes
-import os
+import os, base64, json, hashlib
 from flask_cors import CORS
 
 steganogan = SteganoGAN.load(path='models/Whisperer.steg')
@@ -17,19 +15,20 @@ word_bytes = b'whisperframes'
 sha256_digest = hashlib.sha256(word_bytes).digest()
 SECRET_KEY  = sha256_digest[:32]  # This should be a 16, 24, or 32 byte key for AES
 
-def encrypt_text(text):
-    cipher = AES.new(SECRET_KEY, AES.MODE_CBC)
-    ct_bytes = cipher.encrypt(pad(text.encode(), AES.block_size))
-    iv = cipher.iv
-    return iv + ct_bytes
+def encrypt_text(plain_text, key=SECRET_KEY):
+    cipher = AES.new(key, AES.MODE_CBC)
+    ct_bytes = cipher.encrypt(pad(plain_text.encode('utf-8'), AES.block_size))
+    iv = base64.b64encode(cipher.iv).decode('utf-8')
+    ct = base64.b64encode(ct_bytes).decode('utf-8')
+    return iv + ct
 
-def decrypt_text(enc_text):
+def decrypt_text(encrypted_text, key=SECRET_KEY):
     try:
-        iv = enc_text[:AES.block_size]
-        ct = enc_text[AES.block_size:]
-        cipher = AES.new(SECRET_KEY, AES.MODE_CBC, iv)
+        iv = base64.b64decode(encrypted_text[:24])
+        ct = base64.b64decode(encrypted_text[24:])
+        cipher = AES.new(key, AES.MODE_CBC, iv)
         pt = unpad(cipher.decrypt(ct), AES.block_size)
-        return pt.decode()
+        return pt.decode('utf-8')
     except:
         return None
 
@@ -84,16 +83,15 @@ def decode_message():
         return jsonify({'error': 'Data is required.'}), 400
     
     data = json.loads(data)
-    encrypted = data.get('encrypted', 'false').lower() == 'true'
+    encrypt = data.get('encrypt', 'false').lower() == 'true'
     
     image_path = 'temp_input.png'
     image_file.save(image_path)
     
     decoded_text = steganogan.decode(image_path)
-    
     os.remove(image_path)
     
-    if encrypted:
+    if encrypt:
         decrypted_text = decrypt_text(decoded_text)
         if decrypted_text is not None:
             decoded_text = decrypted_text
