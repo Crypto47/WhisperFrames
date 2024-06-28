@@ -25,14 +25,19 @@ WhisperFrames consists of two main components:
 
 ## Usage
 
-- **Encode Message:**
-  - Upload a cover image using the provided interface.
-  - Enter the text message you want to encode.
-  - Click on the "Encode" button to embed the message within the image.
+## Usage
 
-- **Decode Message:**
-  - Upload the steganographic image containing the encoded message.
-  - Click on the "Decode" button to retrieve the hidden message.
+### Encode Message:
+- **Upload a Cover Image:** Use the provided interface to upload the image in which you want to embed the message.
+- **Enter Text Message:** Type the message you want to encode into the text field.
+- **Optional AES Encryption:** Toggle the encryption switch to enable AES encryption for added security.
+- **Encode the Message:** Click on the "Encode" button to embed the message within the image.
+
+### Decode Message:
+- **Upload Steganographic Image:** Use the interface to upload the image containing the embedded message.
+- **Optional AES Decryption:** If AES encryption was used during encoding, enable decryption and provide the necessary key.
+- **Decode the Message:** Click on the "Decode" button to retrieve the hidden message.
+
 
 ## Contributing
 
