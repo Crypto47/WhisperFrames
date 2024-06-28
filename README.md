@@ -1,6 +1,6 @@
 # WhisperFrames
 
-![WhisperFrames Logo] (WhisperFrames/test/logo)
+![WhisperFrames Logo](WhisperFrames/test/logo)
 
 WhisperFrames is a state-of-the-art deep learning GAN-based image steganography CLI tool with a frontend built on React. This project leverages cutting-edge techniques in machine learning and steganography to encode and decode messages within images securely and efficiently.
 
